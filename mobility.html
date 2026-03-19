@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Telus Phones</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #FFFFFF;
+  color: #2B2B2B;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.phones {
+  padding: 60px 8%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #4B286D;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* FILTERS */
+.filters button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: 2px solid #4B286D;
+  background: transparent;
+  color: #4B286D;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.filters button:hover {
+  background: #4B286D;
+  color: #fff;
+}
+
+/* GRID */
+.phone-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+/* CARD */
+.card {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    background: #FFFFFF;
+    padding: 0px;
+    border-radius: 10px;
+}
+.phone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* TITLE */
+.card:hover h3 {
+    opacity: 100%;
+}
+
+.card h3 {
+    margin: 15px 0 5px;
+    color: rgb(75, 40, 109);
+    text-align: left;
+    text-transform: none;
+    text-decoration-line: none;
+    font-size: 20px;
+    font-family: revert-layer;
+    opacity: 65%;
+    transition: 0.5s;
+    font-weight: 400;
+}
+
+/* PRICE */
+.card p {
+  color: #2B8000;
+    font-weight: 900;
+    text-align: left;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+/* BUTTON */
+.card button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-color: rgb(43, 128, 0);
+  background: rgb(43, 128, 0);
+  color: white ;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.card button:hover {
+  box-shadow: 0px 0px 0px 0.0625rem;
+  background: white;
+  color: rgb(43, 128, 0) ;
+}
+
+/* COLORS */
+.colors {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.color {
+  width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.color.active {
+      border: 1px solid rgb(103, 110, 115);
+    box-shadow: rgb(255 255 255) 0px 0px 0px 2px, rgb(103, 110, 115) 0px 0px 0px 3px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .phone-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .phone-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.top-bar {
+    background: #e9ecef;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+.top-nav-left a, .top-nav-right a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+}
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+}
+.main-menu a {
+    text-decoration: none;
+    color: #333;
+}
+</style>
+<style>
+    /* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* TOP NAV */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 6%;
+  background: #f5f5f5;
+  font-size: 13px;
+}
+
+.top-nav a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #4B286D;
+}
+
+/* HEADER */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 6%;
+  border-bottom: 1px solid #eee;
+}
+
+/* LOGO */
+.logo img {
+  height: 40px;
+}
+
+/* MENU (DESKTOP) */
+.main-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.main-menu a {
+  text-decoration: none;
+  color: #4B286D;
+  font-weight: 500;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+@media (min-width: 500px) {
+  .main-menu {
+    display: none ;
+  }
+}
+  
+
+</style>
+</head>
+<body>
+<div class="top-bar">
+Click here to learn about the TELUS Digital cybersecurity incident &gt;
+</div>
+<div class="top-nav">
+  <div class="top-nav-left">
+    <a href="#">Personal</a>
+    <a href="#">Business</a>
+    <a href="#">Health</a>
+    <a href="#">Agriculture &amp; Consumer Goods</a>
+    <a href="#">Social Impact</a>
+  </div>
+
+  <div class="top-nav-right">
+    <a href="#">Support</a>
+    <a href="#">BC</a>
+    <a href="#">My TELUS</a>
+  </div>
+</div>
+<div class="main-header">
+
+  <div class="logo">
+    <img src="https://telus-promotions.github.io/our-plans/83c89053-cd01-4f92-ac1f-d20a1e5aafd0.png" alt="Telus Logo">
+  </div>
+
+  <nav class="main-menu" id="menu">
+<a href="#">Mobility</a>
+<a href="#">Internet</a>
+<a href="#">TV &amp; Entertainment</a>
+<a href="#">Security &amp; Smart Home</a>
+<a href="#">Health</a>
+<a href="#">TELUS Rewards</a>
+<a href="#">Big Deal Days</a>
+</nav>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+</div>
+<section class="phones">
+
+<h1>Latest Phones</h1>
+<p class="subtitle">Save more with Bring-It-Back™</p>
+
+<div class="filters">
+  <button onclick="filterPhones('all')">All</button>
+  <button onclick="filterPhones('apple')">Apple</button>
+  <button onclick="filterPhones('samsung')">Samsung</button>
+  <button onclick="filterPhones('google')">Google</button>
+</div>
+
+<div class="phone-grid">
+
+<!-- samsung -->
+<div class="card samsung">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/galaxys26ultra_front_cobaltviolet.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #978adb"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26ultra_front_cobaltviolet.png')"></span>
+    <span class="color" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26ultra_front_black.png')"></span>
+    <span class="color" style="background:#8fb7f4"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26ultra_front_skyblue.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Samsung
+  </div>
+    <h3>Galaxy S26 Ultra</h3>
+  <p>$25/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card samsung">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/galaxys26plus_front_black.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26plus_front_black.png')"></span>
+    <span class="color" style="background: #8fb7f4"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26plus_front_skyblue.png')"></span>
+    <span class="color" style="background:#978adb"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26plus_front_cobaltviolet.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Samsung
+  </div>
+    <h3>Galaxy S26+</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card samsung">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/galaxys26_front_skyblue.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #8fb7f4"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26_front_skyblue.png')"></span>
+    <span class="color" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26_front_black.png')"></span>
+    <span class="color" style="background:#978adb"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/galaxys26_front_cobaltviolet.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Samsung
+  </div>
+    <h3>Galaxy S26</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card samsung">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/PEP-Fold_Blue-3.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #152343"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP-Fold_Blue-3.png')"></span>
+    <span class="color" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP-Fold_Black-2.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Samsung
+  </div>
+    <h3>Galaxy Z Fold7</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+
+<div class="card samsung">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/PEP-Flip_Blue-8.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #152343"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP-Flip_Blue-8.png')"></span>
+    <span class="color active" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP-Flip_Black-8.png')"></span>
+      <span class="color active" style="background: #FF4040"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP-Flip_Red-2.png')"></span>
+    </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Samsung
+  </div>
+    <h3>Galaxy Z Flip7</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+<!-- Apple -->
+
+<div class="card apple">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/iPhone_17_Lavender_PDP_Image_Position_1__CAEN.png">
+  <div class="colors">
+    <span class="color active" style="background: #E6D5F1"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17_Lavender_PDP_Image_Position_1__CAEN.png')"></span>
+      <span class="color active" style="background: #FCFCFC"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17_White_PDP_Image_Position_1__CAEN.png')"></span>
+      <span class="color active" style="background: #B4C294"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17_Sage_PDP_Image_Position_1__CAEN.png')"></span>
+      <span class="color active" style="background: #A2B9DC"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17_Mist_Blue_PDP_Image_Position_1__CAEN.png')"></span>
+      <span class="color active" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17_Black_PDP_Image_Position_1__CAEN.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Apple
+  </div>
+    <h3>iPhone 17</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card apple">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/blue_iPhone_Air_Sky_Blue_PDP_Image_Position_1__CAEN.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #E3F1FA"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/blue_iPhone_Air_Sky_Blue_PDP_Image_Position_1__CAEN.png')"></span>
+    <span class="color" style="background: #FCFCFC"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/white_iPhone_Air_Cloud_White_PDP_Image_Position_1__CAEN.png')"></span>
+    <span class="color" style="background:#FAF2E3"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/gold_iPhone_Air_Light_Gold_PDP_Image_Position_1__CAEN.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Apple
+  </div>
+    <h3>iPhone Air</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card apple">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/iPhone_17e_Soft_Pink_PDP_Image_Position_1__CAEN_1.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #FCE0DE"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17e_Soft_Pink_PDP_Image_Position_1__CAEN_1.png')"></span>
+    <span class="color" style="background: #000000"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/iPhone_17e_Black_PDP_Image_Position_1__CAEN_1.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Apple
+  </div>
+    <h3>iPhone 17e</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card apple">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/Blk_iPhone_17_Pro_Deep_Blue_PDP_Image_Position_1__CAEN.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #394673"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/Blk_iPhone_17_Pro_Deep_Blue_PDP_Image_Position_1__CAEN.png')"></span>
+    <span class="color" style="background: #F77E2D"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/orange_iPhone_17_Pro_Cosmic_Orange_PDP_Image_CAEN.png')"></span>
+      <span class="color" style="background: #fff"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/ProMax_Silver_iPhone_17_Pro_Silver_PDP_Image_CAEN.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Apple
+  </div>
+    <h3>iPhone 17 Pro</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card apple">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/orange_iPhone_17_Pro_Cosmic_Orange_PDP_Image_CAEN.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #394673"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/Blk_iPhone_17_Pro_Deep_Blue_PDP_Image_Position_1__CAEN.png')"></span>
+    <span class="color" style="background: #F77E2D"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/orange_iPhone_17_Pro_Cosmic_Orange_PDP_Image_CAEN.png')"></span>
+      <span class="color" style="background: #fff"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/ProMax_Silver_iPhone_17_Pro_Silver_PDP_Image_CAEN.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Apple
+  </div>
+    <h3>iPhone 17 Pro Max</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card google">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/PEP01.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #829ff5"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP01.png')"></span>
+    <span class="color" style="background: #2D2D2D"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP01B.png')"></span>
+      <span class="color" style="background: #fe5662"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP01Berry.png')"></span>
+      <span class="color" style="background: #dbe1db"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP01Fog.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Google
+  </div>
+    <h3>Pixel 10a</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card google">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/image_global_P10PF_2025Q3_Moonstone_Closed-B_MASTER_SIMP.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #656C7C"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/image_global_P10PF_2025Q3_Moonstone_Closed-B_MASTER_SIMP.png')"></span>
+  </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Google
+  </div>
+    <h3>Pixel 10 Pro Fold</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+
+<div class="card google">
+  <img class="phone-img" src="https://telus-promotions.github.io/our-plans/PEP_P10PXL_obs-1.png">
+
+  <div class="colors">
+    <span class="color active" style="background: #2D2D2D"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP_P10PXL_obs-1.png')"></span>
+    <span class="color active" style="background: #656C7C"
+      onclick="changeColor(this,'https://telus-promotions.github.io/our-plans/PEP_P10PXL_moon.png')"></span>
+    </div>
+
+  <div dir="auto" class="css-1rynq56" style="color: rgb(65, 69, 71); text-transform: none;
+     text-decoration-line: none; font-size: 14px; line-height: 24px; font-family: revert-layer; font-weight: 700;
+    opacity: 90%;
+    margin-top: 20px;
+    text-align: left;">Google
+  </div>
+    <h3>Pixel 10 Pro XL</h3>
+  <p>$45/month</p>
+  <button>View Deal</button>
+</div>
+</div>
+
+</section>
+
+<script>
+function filterPhones(category) {
+  let cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    if (category === 'all') {
+      card.style.display = 'block';
+    } else {
+      card.style.display = card.classList.contains(category) ? 'block' : 'none';
+    }
+  });
+}
+
+function changeColor(el, imgSrc) {
+  let card = el.closest('.card');
+  let img = card.querySelector('.phone-img');
+
+  img.src = imgSrc;
+
+  let colors = card.querySelectorAll('.color');
+  colors.forEach(c => c.classList.remove('active'));
+
+  el.classList.add('active');
+}
+</script>
+<script>
+    function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.classList.toggle("active");
+}
+</script>
+</body>
+</html>
