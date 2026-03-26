@@ -82,6 +82,28 @@
             justify-content: space-between;
             padding: 15px 40px;
         }
+        .main-menu a:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: #4b286d;
+        }
+        .main-menu a:hover::after {
+            width: 100%;
+        }
+        .main-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 4px;
+            background: #4b286d;
+            transition: width 0.3s ease;
+        }
         .logo {
             display: flex;
             align-items: center;
