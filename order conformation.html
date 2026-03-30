@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #54595F;
+  --light: #F7F7F8;
+  --dark: #2A2C2E;
+  --border: #D8D8D8;
+
+  /* New Professional Accent Palette */
+  --accent-purple: #4B286D;
+  --accent-green: #66CC00;
+  --accent-green-dark: #2B8000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--light), #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  width: 440px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  padding: 35px;
+  text-align: center;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+/* Top Accent Bar */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-green));
+}
+
+.checkmark {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dark));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 20px rgba(102,204,0,0.3);
+}
+
+.checkmark svg {
+  width: 42px;
+  fill: white;
+}
+
+h1 {
+  color: var(--dark);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+p {
+  color: var(--primary);
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.order-details {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.order-details div {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 14px;
+  color: var(--dark);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 15px 0;
+}
+
+.total {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--accent-purple);
+}
+
+.btn {
+  margin-top: 28px;
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent-purple), #6a3c91);
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 6px 18px rgba(75,40,109,0.25);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, var(--accent-green-dark), var(--accent-green));
+  transform: translateY(-2px);
+}
+
+.footer {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(102,204,0,0.1);
+  color: var(--accent-green-dark);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="badge">Payment Successful</div>
+
+  <div class="checkmark">
+    <svg viewBox="0 0 24 24">
+      <path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/>
+    </svg>
+  </div>
+
+  <h1>Order Confirmed</h1>
+  <p>Your order has been successfully placed. We’re preparing it for dispatch.</p>
+
+  <div class="order-details">
+    <div><span>Order ID</span><span>#123456</span></div>
+    <div><span>Date</span><span id="date"></span></div>
+    <div><span>Payment Method</span><span>Card</span></div>
+
+    <div class="divider"></div>
+
+    <div><span>Product</span><span>$32</span></div>
+    <div><span>Shipping</span><span>$5</span></div>
+
+    <div class="divider"></div>
+
+    <div class="total"><span>Total</span><span id="total">$37</span></div>
+  </div>
+
+  <a href="https://telus-promotions.github.io/our-plans/mobility.html" class="btn">Continue Shopping</a>
+
+  <div class="footer">A confirmation email has been sent to your inbox.</div>
+
+</div>
+
+<script>
+const dateElement = document.getElementById("date");
+const today = new Date();
+const options = { year: 'numeric', month: 'short', day: 'numeric' };
+dateElement.innerText = today.toLocaleDateString(undefined, options);
+</script>
+
+</body>
+</html>
